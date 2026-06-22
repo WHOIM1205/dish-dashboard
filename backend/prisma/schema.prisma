@@ -1,0 +1,18 @@
+// Prisma schema for the Dish Dashboard
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Dish {
+  id          Int     @id @default(autoincrement())
+  dishId      String  @unique
+  dishName    String
+  imageUrl    String
+  isPublished Boolean @default(false)
+}
