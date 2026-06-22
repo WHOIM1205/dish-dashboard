@@ -59,15 +59,18 @@ dish-dashboard/
 
 ```bash
 cd backend
+cp .env.example .env                 # provides DATABASE_URL and PORT (required by Prisma)
 npm install
-npx prisma migrate dev --name init   # creates the SQLite DB and seeds it
+npx prisma migrate dev --name init   # creates the SQLite DB, generates the client, and seeds it
 npm run dev                          # starts the server on http://localhost:4000
 ```
 
-> Copy `backend/.env.example` to `backend/.env` before running (it provides
-> `DATABASE_URL` and `PORT`).
+> Windows (PowerShell): use `copy .env.example .env` instead of `cp`.
 
 ## Frontend Setup
+
+> Start the backend first (see above) and keep it running. Then, in a **second
+> terminal**, run the frontend — it talks to the backend on `localhost:4000`.
 
 ```bash
 cd frontend
